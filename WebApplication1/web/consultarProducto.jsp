@@ -14,24 +14,24 @@
     <body>
         <h1>Administración de productos</h1>
         <div class="containerRegistro" >
-                <form method="post" name="formularioregistro" action="registrar.jsp">
+                <form method="post" name="formularioregistro" action="registrarProducto.jsp">
                     <br>
                     <label>Nombre del Producto:</label>
                     <input type="text" name="nombre" size="30" >
                     <br>
                     <label>Tamaño:</label>
-                    <input type="text" name="ciudad" size="30" >
+                    <input type="text" name="tamaño" size="30" >
                     <br>
                     <label>Gramos:</label>
-                    <input type="text" name="tel" size="30" >
+                    <input type="text" name="gramos" size="30" >
                     <br>
                     <label>Presentación:</label>
-                    <input type="text" name="tel" size="30" >
+                    <input type="text" name="presentacion" size="30" >
                     <br>
                     <label>Precio:</label>
-                    <input type="number" name="tel" size="30" >
+                    <input type="number" name="precio" size="30" >
                     <br>
-                    <input type="submit" value="Registrar Cuenta" >
+                    <input type="submit" value="Registrar Producto" >
                     <input type="reset" value="Borrar Datos" >
                 </form>
             </div>
@@ -56,7 +56,7 @@
                     Statement set = null;
                     ResultSet rs = null;
                     String url, userName, password, driver;
-                    url = "jdbc:mysql://localhost/registroProductos";
+                    url = "jdbc:mysql://localhost/ben_y_jerrys";
                     userName = "root";
                     password = "Edgar777";
                     driver = "com.mysql.jdbc.Driver";
@@ -67,7 +67,7 @@
                         con = DriverManager.getConnection(url, userName, password);
                         
                         try{
-                            String q = "select * from registroProductos order by nom_pro";
+                            String q = "select * from MProductos";
                             
                             set = con.createStatement();
                             rs = set.executeQuery(q);
@@ -78,11 +78,11 @@
                     <td> <%=rs.getInt("id_pro")%> </td>
                     <td> <%=rs.getString("nom_pro")%> </td>
                     <td> <%=rs.getString("tam_pro")%> </td>
-                    <td> <%=rs.getString("gral_pro")%> </td>
+                    <td> <%=rs.getString("gra_pro")%> </td>
                     <td> <%=rs.getString("pre_pro")%> </td>
                     <td> <%=rs.getString("cos_pro")%> </td>
                     <td> <a href="editarProducto.jsp?id=<%=rs.getInt("id_pro")%>" >Editar</a> </td>
-                    <td> <a href="borrarProducto.jsp?id=<%=rs.getInt("id_pro")%>" >Borrar</a> </td>
+                    <td> <a href="eliminarProducto.jsp?id=<%=rs.getInt("id_pro")%>" >Borrar</a> </td>
                 </tr>
 
 
